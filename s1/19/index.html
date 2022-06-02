@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+</head>
+<body>
+  <button id="clickEvent" onclick="btnClicked()">click</button>
+
+  <div id="app"> <!-- 仮想DOM-->
+    <button @click="vueBtnClickedEvent">vue event click</button>
+    <button @click="vueBtnClickedArgs(1)">vue arg click</button>
+    <button @click="vueBtnClickedArgsEvent(1, $event)">vue argEvent click</button>
+  </div>
+  <script>
+
+    const app = new Vue({
+        el: '#app',
+        data() {
+          return {
+          }
+        },
+        methods: {
+          vueBtnClicked() {
+            console.log('vue clicked')
+          },
+          vueBtnClickedEvent(e) {
+            console.log(e)
+          },
+          vueBtnClickedArgs(int) {
+            console.log(int)
+          },
+          vueBtnClickedArgsEvent(int, e) {
+            console.log(int, e)
+          }
+        }
+      })
+
+
+
+
+
+      function btnClicked() {
+        console.log('js clicked');
+      }
+
+      const clickEvent = document.querySelector('#clickEvent');
+      clickEvent.addEventListener('click', (e) => {
+        console.log(e);
+      })
+  </script>
+</body>
+</html>

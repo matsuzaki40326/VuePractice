@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  <style>
+    .active {
+      border: 1px solid red;
+    }
+    .text-danger {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div style="color:blue; font-size: 20px;">styleTest</div>
+  <div class="active text-danger">classTest</div>
+
+  <div id="app"> <!-- 仮想DOM-->
+    <div :style="{fontSize: fontSize}">styleTest</div>
+    <div :style="{'font-size': fontSize}">styleTest</div>
+    <div :class="{active: isActive}">classTest</div>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          fontSize: '20px',
+          isActive: false
+        }
+      }
+    })
+  </script>
+</body>
+</html>
