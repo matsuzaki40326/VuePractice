@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+</head>
+<body>
+  <script>
+    const obj = [
+      {id:1, title: 'test1'},
+      {id:2, title: 'test2'},
+      {id:3, title: 'test3'},
+    ];
+
+    obj.splice(2,1,{id:4, title: 'test4'});
+    console.log(obj);
+
+    obj.splice(3,0,{id:5, title: 'test5'});
+    console.log(obj);
+
+
+
+    const obj2 = [
+      {id:1, title: 'test1'},
+      {id:2, title: 'test2'},
+      {id:3, title: 'test3'},
+    ];
+
+    obj2.splice(1,2,{id:4, title: 'test4'});
+    console.log(obj2)
+  </script>
+</body>
+</html>
