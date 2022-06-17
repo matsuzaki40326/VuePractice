@@ -4,5 +4,12 @@ module.exports = defineConfig({
 })
 
 module.exports = {
-  publicPath: ''
+  publicPath: '',
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `@import " ~@/assets/sass/main.scss";`
+      },
+    }
+  }
 }
