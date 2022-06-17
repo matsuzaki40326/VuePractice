@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="red-b">
     test
-    {{ testData }}</div>
+    {{ testData }}
+  </div>
 </template>
 
 <script>
@@ -15,6 +16,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.red-b {
+  border: 1px solid red;
+}
 </style>
