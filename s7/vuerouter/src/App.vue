@@ -9,7 +9,8 @@
       <router-link to="/user/profile">User</router-link>
     </nav>
     <div class="vue-b"></div>
-    <router-view/>
+    <router-view />
+    <router-view  name="sub" />
   </div>
 </template>
 
