@@ -5,8 +5,10 @@
       <router-link to="/about" exact-active-class="test">About</router-link> |
       <!-- <router-link to="/about" tag="button">About</router-link> -->
       <router-link to="/book">BookList</router-link> |
-      <router-link to="/item/1">Item</router-link>
+      <router-link to="/item/1">Item</router-link> |
+      <router-link to="/user/profile">User</router-link>
     </nav>
+    <div class="vue-b"></div>
     <router-view/>
   </div>
 </template>
@@ -39,5 +41,9 @@ nav a.router-link-exact-active {
 
 nav a.test {
   color: lightblue;
+}
+
+.vue-b {
+  border: #42b983 1px solid;
 }
 </style>
