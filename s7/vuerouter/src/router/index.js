@@ -28,7 +28,12 @@ const routes = [
   {
     path: '/book/:id',
     name: 'Book',
-    component: BookDetail
+    component: BookDetail,
+    props: route => ({
+      id: route.params.id,
+      title: route.params.title,
+      content: route.params.content
+    })
   }
 ]
 
