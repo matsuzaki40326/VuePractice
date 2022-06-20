@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header />
+    <Header @delete-local-storage="deleteLocalStorage"/>
     <v-main>
       <v-container>
         <router-view
@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Header from './global/Header.vue';
-import Footer from './global/Footer.vue';
+import Header from './global/Header.vue'
+import Footer from './global/Footer.vue'
 const STORAGE_KEY = 'books'
 
 export default {
@@ -30,9 +30,9 @@ export default {
     mounted() {
       if (localStorage.getItem(STORAGE_KEY)) {
         try {
-          this.books = JSON.parse(localStorage.getItem(STORAGE_KEY));
+          this.books = JSON.parse(localStorage.getItem(STORAGE_KEY))
         } catch(e) {
-          localStorage.removeItem(STORAGE_KEY);
+          localStorage.removeItem(STORAGE_KEY)
         }
       }
     },
@@ -46,19 +46,19 @@ export default {
           description: e.description,
           readDate: '',
           memo: ''
-        });
-        // this.newBook = '';
-        this.saveBooks();
+        })
+        // this.newBook = ''
+        this.saveBooks()
         // console.log(this.books.slice(-1)[0].id) 最後に追加したidの取得コード
         this.goToEditPage(this.books.slice(-1)[0].id)
       },
       removeBook(x) {
-        this.books.splice(x, 1);
-        this.saveBooks();
+        this.books.splice(x, 1)
+        this.saveBooks()
       },
       saveBooks() {
-        const parsed = JSON.stringify(this.books);
-        localStorage.setItem('STORAGE_KEY', parsed);
+        const parsed = JSON.stringify(this.books)
+        localStorage.setItem('STORAGE_KEY', parsed)
       },
       updateBookInfo(e) {
         const updateInfo = {
@@ -76,11 +76,20 @@ export default {
       },
       goToEditPage(id) {
         this.$router.push(`/edit/${id}`)
+      },
+      deleteLocalStorage() {
+        const isDeleted = 'LocalStorageのデータを削除してもいいですか？'
+        if(window.confirm(isDeleted)) {
+          localStorage.setItem(STORAGE_KEY, '')
+          localStorage.removeItem(STORAGE_KEY)
+          this.books = []
+          window.location.reload()
+        }
       }
     },
     components: {
       Header,
       Footer
     }
-};
+}
 </script>
