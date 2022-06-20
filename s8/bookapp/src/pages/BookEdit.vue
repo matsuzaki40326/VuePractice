@@ -63,7 +63,7 @@ export default {
  data() {
   return {
     book: '',
-    date: new Date().toISOString().substr(0, 10),
+    date: '',
     menu: false,
   }
  },
@@ -80,7 +80,12 @@ export default {
   next(vm => {
     vm.$nextTick().then(() => {
       vm.book = vm.books[vm.$route.params.id]
-      console.log(vm.book)
+      if(vm.book.readDate) {
+        vm.date = vm.book.readDate
+      } else {
+        vm.date = new Date().toISOString().substr(0, 10)
+      }
+      // console.log(vm.book)
     })
   })
  }
