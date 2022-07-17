@@ -9,11 +9,12 @@
     <p>reactiveToRefs: {{ titleRef }}</p>
     <p>reactiveToRefs: {{ authorRef[1] }}</p>
     <button @click="btnClick">click</button>
+    <p>computed: {{ totalPrice }}</p>
   </div>
 </template>
 
 <script>
-import { ref, reactive, toRefs } from 'vue'
+import { ref, reactive, toRefs, computed } from 'vue'
 export default {
   setup() {
     let name = 'test'
@@ -35,6 +36,15 @@ export default {
       console.log(e)
     }
 
+    const item = reactive({
+      price: 100,
+      number: 1
+    })
+
+    const totalPrice = computed(() => {
+      return item.price * item.number
+    })
+
     console.log('setup')
     console.log(this)
     console.log(nameRef)
@@ -45,7 +55,9 @@ export default {
       nameRef,
       book,
       ...toRefs(bookToRefs),
-      btnClick
+      btnClick,
+      item,
+      totalPrice
     }
   },
   data() {
