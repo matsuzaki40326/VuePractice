@@ -3,17 +3,25 @@
     CompositionTest
     <p>{{ name }}</p>
     <p>{{ age }}</p>
-    <p>{{ nameRef }}</p>
+    <p>ref: {{ nameRef }}</p>
+    <p>reactive: {{ book.title }}</p>
+    <p>reactive: {{ book.author[0] }}</p>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 export default {
   setup() {
     let name = 'test'
     const age = 30
     const nameRef = ref('test20')
+
+    const book = reactive({
+      title: 'title',
+      author: ['a', 'y']
+    })
+
     console.log('setup')
     console.log(this)
     console.log(nameRef)
@@ -21,7 +29,8 @@ export default {
     return {
       name,
       age,
-      nameRef
+      nameRef,
+      book
     }
   },
   data() {
