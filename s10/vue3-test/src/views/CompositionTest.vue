@@ -8,6 +8,7 @@
     <p>reactive: {{ book.author[0] }}</p>
     <p>reactiveToRefs: {{ titleRef }}</p>
     <p>reactiveToRefs: {{ authorRef[1] }}</p>
+    <button @click="btnClick">click</button>
   </div>
 </template>
 
@@ -29,6 +30,11 @@ export default {
       authorRef: ['aRef', 'yRef']
     })
 
+    const btnClick = e => {
+      console.log(book.title)
+      console.log(e)
+    }
+
     console.log('setup')
     console.log(this)
     console.log(nameRef)
@@ -38,7 +44,8 @@ export default {
       age,
       nameRef,
       book,
-      ...toRefs(bookToRefs)
+      ...toRefs(bookToRefs),
+      btnClick
     }
   },
   data() {
