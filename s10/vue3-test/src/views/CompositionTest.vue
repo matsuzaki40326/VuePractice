@@ -11,13 +11,16 @@
     <button @click="btnClick">click</button>
     <p>computed: {{ totalPrice }}</p>
     <div>
-      <input v-model="search">
+      watch: <input v-model="search">
+    </div>
+    <div>
+      watchEffect: <input v-model="searchEffect">
     </div>
   </div>
 </template>
 
 <script>
-import { ref, reactive, toRefs, computed, watch } from 'vue'
+import { ref, reactive, toRefs, computed, watch, watchEffect } from 'vue'
 export default {
   setup() {
     let name = 'test'
@@ -55,6 +58,11 @@ export default {
       console.log(`prev: ${prevValue}`)
     })
 
+    const searchEffect = ref('')
+    watchEffect(() => {
+      console.log(`watchEffect: ${searchEffect.value}`)
+    })
+
     console.log('setup')
     console.log(this)
     console.log(nameRef)
@@ -68,7 +76,8 @@ export default {
       btnClick,
       item,
       totalPrice,
-      search
+      search,
+      searchEffect
     }
   },
   data() {
