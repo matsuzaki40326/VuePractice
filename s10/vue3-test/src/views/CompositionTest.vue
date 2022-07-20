@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { ref, reactive, toRefs, computed, watch, watchEffect } from 'vue'
+import { ref, reactive, toRefs, computed, watch, watchEffect, onMounted } from 'vue'
 export default {
   setup() {
     let name = 'test'
@@ -62,6 +62,11 @@ export default {
     watchEffect(() => {
       console.log(`watchEffect: ${searchEffect.value}`)
     })
+
+    onMounted(() => {
+      console.log('onMounted')
+    })
+
 
     console.log('setup')
     console.log(this)
